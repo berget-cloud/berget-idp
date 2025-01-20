@@ -35,7 +35,7 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                     social.providers !== undefined &&
                     social.providers.length !== 0 && (
                         <div id="kc-social-providers" className="mt-5 space-y-7">
-                            <h2 className="text-center text-lg mt-7">
+                            <h2 className="text-lg mt-7">
                                 {msg("identity-provider-login-label")}
                             </h2>
                             <div

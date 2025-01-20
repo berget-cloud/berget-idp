@@ -29,7 +29,7 @@ export const Default: StoryObj = {
 export const CustomClass: StoryObj = {
     args: {
         children: "Custom Label",
-        className: "text-red-500" // Custom class to change label color
+        className: "text-red-400" // Custom class to change label color
     }
 };
 

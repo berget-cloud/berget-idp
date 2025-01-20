@@ -1,16 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Ovo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Ovo&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Ovo', serif;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Ovo", serif;
+        text-align: left;
     }
-    
+
     body {
-        font-family: 'DM Sans', sans-serif;
+        font-family: "DM Sans", sans-serif;
     }
 }
 
@@ -46,7 +52,7 @@
     .dark {
         --background: 240 10% 3.9%;
         --foreground: 0 0% 98%;
-        --card: 240 10% 3.9%;
+        --card: 240 10% 5.9%;
         --card-foreground: 0 0% 98%;
         --popover: 240 10% 3.9%;
         --popover-foreground: 0 0% 98%;

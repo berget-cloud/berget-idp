@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Ovo&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Ovo', serif;
+    }
+    
+    body {
+        font-family: 'DM Sans', sans-serif;
+    }
+}
 
 @layer base {
     :root {

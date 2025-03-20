@@ -4,7 +4,7 @@ import { KcPage } from "./kc.gen";
 import "./styles/fonts";
 
 // Set theme name to Berget
-document.title = "Berget";
+document.title = "Berget Identity Provider";
 
 /*
 // The following block can be uncommented to test a specific page with `yarn dev`

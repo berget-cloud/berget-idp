@@ -2,10 +2,10 @@
     "name": "berget-idp",
     "version": "0.0.0",
     "description": "Berget Identity Provider Theme",
-    "homepage": "https://nima70.github.io/keycloakify-tailwind-shadcn/storybook/",
+    "homepage": "https://nima70.github.io/berget/storybook/",
     "repository": {
         "type": "git",
-        "url": "git://github.com/keycloakify/keycloakify-starter-webpack.git"
+        "url": "git://github.com/keycloakify/berget.git"
     },
     "scripts": {
         "prestorybook": "keycloakify update-kc-gen && keycloakify copy-keycloak-resources-to-public",

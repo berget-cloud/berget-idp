@@ -26,6 +26,7 @@
 
 @layer base {
     :root {
+        /* Berget theme colors */
         --background: 7 7% 95%;
         --foreground: 240 10% 3.9%;
         --card: 0 14% 100%;
@@ -54,6 +55,7 @@
     }
 
     .dark {
+        /* Berget dark theme colors */
         --background: 240 5% 10%;
         --foreground: 0 0% 98%;
         --card: 240 10% 5.9%;

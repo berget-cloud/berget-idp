@@ -75,10 +75,7 @@
             "./.eslintrc.js"
         ],
         "rules": {
-            "react-hooks/exhaustive-deps": "off",
-            "@typescript-eslint/no-redeclare": "off",
-            "no-labels": "off",
-            "@typescript-eslint/no-unused-vars": "off"
+            "@typescript-eslint/no-redeclare": "off"
         },
         "overrides": [
             {
@@ -93,9 +90,8 @@
     },
     "browserslist": {
         "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
+            "defaults",
+            "not IE 11"
         ],
         "development": [
             "last 1 chrome version",

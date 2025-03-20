@@ -9,6 +9,8 @@ module.exports = {
     "jsx-a11y/alt-text": "off",
     "react/jsx-no-target-blank": "off",
     "eqeqeq": "off",
-    "no-template-curly-in-string": "off"
+    "no-template-curly-in-string": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-labels": "off"
   }
 };

@@ -1,3 +1,3 @@
 // Import Fontsource packages
-import "@fontsource-variable/dm-sans";
+import "@fontsource/dm-sans";
 import "@fontsource/ovo";

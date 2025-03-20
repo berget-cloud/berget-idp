@@ -1,6 +1,6 @@
-# 🚀 Keycloakify + Tailwind CSS & ShadCN UI: Enhancing Keycloak Themes 🚀
+# Berget Identity Provider Theme
 
-Welcome to the Keycloakify + Tailwind CSS & ShadCN UI repository! This project is a community-driven effort aimed at making Keycloak theming more accessible, modern, and easy to customize. By integrating Tailwind CSS and ShadCN UI, I am upgrading the Keycloakify ecosystem, one page at a time, to meet the needs of modern front-end development.
+A modern, customizable Keycloak theme for Berget Identity Provider built with Keycloakify, React, Tailwind CSS, and shadcn/ui.
 
 This project is designed to be developer-friendly, making it easy to customize themes or individual components to suit your specific needs. With the help of Storybook, developers can modify components in isolation, streamlining the customization process.
 

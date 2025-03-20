@@ -1,5 +1,5 @@
 {
-  "destDirPath": "/Users/cln/src/berget/keycloakify-tailwind-shadcn/public/keycloak-resources",
+  "destDirPath": "/Users/cln/src/berget/idp/public/keycloak-resources",
   "keycloakifyVersion": "10.0.5",
   "buildContext": {
     "loginThemeResourcesFromKeycloakVersion": "10.0.5",

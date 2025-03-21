@@ -24,16 +24,15 @@ export const { getKcContextMock } = createGetKcContextMock({
         realm: {
             internationalizationEnabled: true,
             displayNameHtml: "Berget AI Console",
-            loginWithEmailAllowed: true,
             registrationAllowed: true,
-            resetPasswordAllowed: true,
             rememberMe: true,
-            password: true
+            password: true,
+            registrationEmailAsUsername: false
         },
         url: {
             loginAction: "#",
-            loginResetCredentialsUrl: "#",
-            registrationUrl: "#"
+            registrationUrl: "#",
+            loginUrl: "#"
         },
         message: undefined,
         login: {

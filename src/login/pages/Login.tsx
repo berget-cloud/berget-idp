@@ -31,7 +31,8 @@ export default function Login(props: PageProps) {
                     <h1 className="login-title">Berget AI Console</h1>
                     <p className="login-subtitle">Secure infrastructure management for AI operations</p>
                     
-                    <div className="login-features">
+                    {/* Hide features on smaller screens */}
+                    <div className="login-features hide-on-mobile">
                         <div className="feature-item">
                             <div className="feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="icon">

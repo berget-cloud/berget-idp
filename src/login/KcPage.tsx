@@ -42,7 +42,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return (
                             <DefaultPage
                                 kcContext={kcContext}
-                                i18n={compatI18n}
+                                i18n={i18n}
                                 classes={classes}
                                 Template={BergetTemplate}
                                 doUseDefaultCss={false}

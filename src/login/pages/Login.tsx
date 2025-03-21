@@ -1,13 +1,16 @@
 import { useState } from "react";
 import type { PageProps } from "keycloakify/login";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Separator } from "../components/ui/separator";
+import { GithubIcon, KeyIcon } from "lucide-react";
 
 export default function Login(props: PageProps) {
     const { 
         kcContext, 
         i18n, 
         doUseDefaultCss, 
-        Template, 
-        classes 
+        Template 
     } = props;
 
     const { msg, msgStr } = i18n;
@@ -17,26 +20,108 @@ export default function Login(props: PageProps) {
 
     return (
         <Template
-            {...{ kcContext, i18n, doUseDefaultCss, classes }}
-            headerNode={msg("loginAccountTitle")}
-            displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
+            {...{ kcContext, i18n, doUseDefaultCss }}
+            displayInfo={false}
+            displayMessage={true}
             displayWide={false}
-            infoNode={
-                <div id="kc-registration">
-                    <span>{msg("noAccount")} <a tabIndex={6} href={url.registrationUrl}>{msg("doRegister")}</a></span>
-                </div>
-            }
+            headerNode={null}
         >
-            <div id="kc-form">
-                <div id="kc-form-wrapper">
+            <div className="login-split-layout">
+                <div className="login-info-section">
+                    <h1 className="login-title">Berget AI Console</h1>
+                    <p className="login-subtitle">Secure infrastructure management for AI operations</p>
+                    
+                    <div className="login-features">
+                        <div className="feature-item">
+                            <div className="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="icon">
+                                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="1.5" />
+                                    <path d="M8 11.4C8 9.15979 9.79086 7.4 12 7.4C14.2091 7.4 16 9.15979 16 11.4C16 13.0126 15.0144 14.4003 13.6 14.9M12 17.5V14.6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                </svg>
+                            </div>
+                            <div className="feature-content">
+                                <h3>Enterprise Security</h3>
+                                <p>SOC2 certified infrastructure with end-to-end encryption</p>
+                            </div>
+                        </div>
+                        
+                        <div className="feature-item">
+                            <div className="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="icon">
+                                    <path d="M13 10V3L4 14H11V21L20 10H13Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </div>
+                            <div className="feature-content">
+                                <h3>High Performance</h3>
+                                <p>Low-latency global infrastructure for real-time AI operations</p>
+                            </div>
+                        </div>
+                        
+                        <div className="feature-item">
+                            <div className="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="icon">
+                                    <path d="M16 9V6C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    <rect x="3" y="9" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                                    <circle cx="12" cy="15" r="2" stroke="currentColor" strokeWidth="1.5" />
+                                    <path d="M12 17V19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                </svg>
+                            </div>
+                            <div className="feature-content">
+                                <h3>Access Control</h3>
+                                <p>Fine-grained permissions and role-based access control</p>
+                            </div>
+                        </div>
+                        
+                        <div className="feature-item">
+                            <div className="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="icon">
+                                    <path d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12H18M12 22C6.47715 22 2 17.5228 2 12M12 22V18M2 12C2 6.47715 6.47715 2 12 2M2 12H6M12 2V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                </svg>
+                            </div>
+                            <div className="feature-content">
+                                <h3>Cloud Native</h3>
+                                <p>Seamless integration with major cloud providers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="login-form-section">
+                    <div className="login-form-header">
+                        <h2>Sign In</h2>
+                        <p>Welcome back! Sign in to continue</p>
+                    </div>
+
+                    {kcContext.message !== undefined && (
+                        <div className={`alert ${kcContext.message.type === "error" ? "alert-error" : 
+                                        kcContext.message.type === "success" ? "alert-success" : 
+                                        kcContext.message.type === "warning" ? "alert-warning" : "alert-info"}`}>
+                            <span className={`status-indicator ${kcContext.message.type}`}></span>
+                            {kcContext.message.summary}
+                        </div>
+                    )}
+
+                    <div className="social-login">
+                        <Button variant="outline" fullWidth={true} className="social-button">
+                            <GithubIcon className="mr-2 h-4 w-4" />
+                            Continue with GitHub
+                        </Button>
+                    </div>
+
+                    <div className="separator-container">
+                        <Separator className="separator-line" />
+                        <span className="separator-text">or</span>
+                        <Separator className="separator-line" />
+                    </div>
+
                     <form id="kc-form-login" onSubmit={e => {
                         e.preventDefault();
                         setIsLoginButtonDisabled(true);
                         const formElement = e.target as HTMLFormElement;
                         formElement.submit();
-                    }} action={url.loginAction} method="post">
-                        <div className={classes?.kcFormGroupClass}>
-                            <label htmlFor="username" className={classes?.kcLabelClass}>
+                    }} action={url.loginAction} method="post" className="login-form">
+                        <div className="form-group">
+                            <label htmlFor="username" className="form-label">
                                 {!realm.loginWithEmailAllowed
                                     ? msg("username")
                                     : !realm.registrationEmailAsUsername
@@ -44,83 +129,86 @@ export default function Login(props: PageProps) {
                                         : msg("email")}
                             </label>
 
-                            <input
+                            <Input
                                 tabIndex={1}
                                 id="username"
-                                className={classes?.kcInputClass}
                                 name="username"
                                 defaultValue={login.username ?? ""}
-                                type="text"
                                 autoFocus={true}
                                 autoComplete="off"
                                 disabled={usernameEditDisabled}
                             />
                         </div>
 
-                        <div className={classes?.kcFormGroupClass}>
-                            <label htmlFor="password" className={classes?.kcLabelClass}>
-                                {msg("password")}
-                            </label>
-                            <input
+                        <div className="form-group">
+                            <div className="password-label-row">
+                                <label htmlFor="password" className="form-label">
+                                    {msg("password")}
+                                </label>
+                                {realm.resetPasswordAllowed && (
+                                    <a tabIndex={5} href={url.loginResetCredentialsUrl} className="forgot-password">
+                                        {msg("doForgotPassword")}
+                                    </a>
+                                )}
+                            </div>
+                            <Input
                                 tabIndex={2}
                                 id="password"
-                                className={classes?.kcInputClass}
                                 name="password"
                                 type="password"
                                 autoComplete="off"
                             />
                         </div>
 
-                        <div className={`${classes?.kcFormGroupClass} ${classes?.kcFormSettingClass}`}>
-                            <div id="kc-form-options">
-                                {realm.rememberMe && (
-                                    <div className="checkbox">
-                                        <label>
-                                            <input
-                                                tabIndex={3}
-                                                id="rememberMe"
-                                                name="rememberMe"
-                                                type="checkbox"
-                                                defaultChecked={!!login.rememberMe}
-                                            />
-                                            {msg("rememberMe")}
-                                        </label>
-                                    </div>
-                                )}
+                        {realm.rememberMe && (
+                            <div className="remember-me">
+                                <label className="checkbox-container">
+                                    <input
+                                        tabIndex={3}
+                                        id="rememberMe"
+                                        name="rememberMe"
+                                        type="checkbox"
+                                        defaultChecked={!!login.rememberMe}
+                                    />
+                                    <span className="checkbox-text">{msg("rememberMe")}</span>
+                                </label>
                             </div>
-                            <div className={classes?.kcFormOptionsWrapperClass}>
-                                {realm.resetPasswordAllowed && (
-                                    <span>
-                                        <a tabIndex={5} href={url.loginResetCredentialsUrl}>
-                                            {msg("doForgotPassword")}
-                                        </a>
-                                    </span>
-                                )}
-                            </div>
-                        </div>
+                        )}
 
-                        <div id="kc-form-buttons" className={classes?.kcFormButtonsClass}>
-                            <input
-                                type="hidden"
-                                id="id-hidden-input"
-                                name="credentialId"
-                                {...(auth?.selectedCredential !== undefined
-                                    ? {
-                                        value: auth.selectedCredential
-                                    }
-                                    : {})}
-                            />
-                            <input
-                                tabIndex={4}
-                                className={`${classes?.kcButtonClass} ${classes?.kcButtonPrimaryClass} ${classes?.kcButtonBlockClass} ${classes?.kcButtonLargeClass}`}
-                                name="login"
-                                id="kc-login"
+                        <input
+                            type="hidden"
+                            id="id-hidden-input"
+                            name="credentialId"
+                            {...(auth?.selectedCredential !== undefined
+                                ? {
+                                    value: auth.selectedCredential
+                                }
+                                : {})}
+                        />
+
+                        <div className="form-actions">
+                            <Button 
                                 type="submit"
-                                value={msgStr("doLogIn")}
                                 disabled={isLoginButtonDisabled}
-                            />
+                                fullWidth={true}
+                            >
+                                {msgStr("doLogIn")}
+                            </Button>
                         </div>
                     </form>
+
+                    <div className="alternative-login">
+                        <Button variant="outline" fullWidth={true} className="alternative-button">
+                            <KeyIcon className="mr-2 h-4 w-4" />
+                            Sign in with Passkey
+                        </Button>
+                    </div>
+
+                    {realm.password && realm.registrationAllowed && !registrationDisabled && (
+                        <div className="signup-link">
+                            <span>Don't have an account? <a href={url.registrationUrl}>Sign up</a></span>
+                        </div>
+                    )}
                 </div>
             </div>
         </Template>

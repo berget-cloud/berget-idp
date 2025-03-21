@@ -45,29 +45,8 @@ export default function BergetTemplate(props: TemplateProps) {
 
     return (
         <div className="login-container">
-            <div className="card-container">
-                <div className="logo-container">
-                    <h1>{msg("loginTitle")}</h1>
-                </div>
-
-                {displayMessage && kcContext.message !== undefined && (
-                    <div className={`alert ${kcContext.message.type === "error" ? "alert-error" : 
-                                           kcContext.message.type === "success" ? "alert-success" : 
-                                           kcContext.message.type === "warning" ? "alert-warning" : "alert-info"}`}>
-                        <span className={`status-indicator ${kcContext.message.type}`}></span>
-                        {kcContext.message.summary}
-                    </div>
-                )}
-
+            <div className="login-content">
                 {children}
-
-                {displayInfo && (
-                    <div className="form-group">
-                        <div className={classes?.kcInfoArea}>
-                            {infoNode}
-                        </div>
-                    </div>
-                )}
                 
                 <div className="login-footer">
                     &copy; {new Date().getFullYear()} Berget - All rights reserved

@@ -14,7 +14,7 @@ export default function Register(props: PageProps) {
     const { kcContext, i18n, doUseDefaultCss, Template } = props;
 
     const { msg, msgStr } = i18n;
-    const { url, messagesPerField, register, realm, passwordPolicies } = kcContext;
+    const { url, messagesPerField, register, realm } = kcContext;
 
     const [isRegisterButtonDisabled, setIsRegisterButtonDisabled] = useState(false);
 

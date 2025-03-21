@@ -8,7 +8,7 @@ export default function BergetTemplate(props: {
     children: React.ReactNode;
     i18n: { msg: (str: string) => string; msgStr: (str: string) => string };
 }) {
-    const { children, i18n } = props;
+    const { children } = props;
     const bokehRef = useRef<HTMLDivElement>(null);
 
     // Add bokeh effect on component mount

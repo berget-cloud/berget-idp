@@ -16,7 +16,8 @@ export default function WebauthnRegister(props: PageProps) {
     const { msg, msgStr } = i18n;
     const { url, messagesPerField } = kcContext;
 
-    const [isRegisterButtonDisabled, setIsRegisterButtonDisabled] = useState(false);
+    // We only need the setter function
+    const [, setIsRegisterButtonDisabled] = useState(false);
 
     return (
         <Template {...{ kcContext, i18n, doUseDefaultCss }}>

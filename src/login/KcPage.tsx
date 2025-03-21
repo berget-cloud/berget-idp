@@ -5,6 +5,7 @@ import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import BergetTemplate from "./components/BergetTemplate";
 import Login from "./pages/Login";
+import type { I18n } from "./i18n";
 
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
@@ -16,6 +17,12 @@ export default function KcPage(props: { kcContext: KcContext }) {
     const { kcContext } = props;
 
     const { i18n } = useI18n({ kcContext });
+    
+    // Create a compatible i18n object for our components
+    const compatI18n = {
+        msg: (str: string) => i18n.msg(str as any),
+        msgStr: (str: string) => i18n.msgStr(str as any)
+    };
 
     return (
         <Suspense>
@@ -25,7 +32,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return (
                             <Login
                                 kcContext={kcContext}
-                                i18n={i18n}
+                                i18n={compatI18n}
                                 classes={classes}
                                 Template={BergetTemplate}
                                 doUseDefaultCss={false}
@@ -35,7 +42,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return (
                             <DefaultPage
                                 kcContext={kcContext}
-                                i18n={i18n}
+                                i18n={compatI18n}
                                 classes={classes}
                                 Template={BergetTemplate}
                                 doUseDefaultCss={false}

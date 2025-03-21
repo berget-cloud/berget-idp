@@ -39,26 +39,8 @@ export default function Login(props: PageProps) {
                                 </svg>
                             </div>
                             <div className="feature-content">
-                                <h3>Enterprise Security</h3>
-                                <p>SOC2 certified infrastructure with end-to-end encryption</p>
-                            </div>
-                        </div>
-
-                        <div className="feature-item">
-                            <div className="feature-icon">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="icon">
-                                    <path
-                                        d="M13 10V3L4 14H11V21L20 10H13Z"
-                                        stroke="currentColor"
-                                        strokeWidth="1.5"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </div>
-                            <div className="feature-content">
-                                <h3>High Performance</h3>
-                                <p>Low-latency global infrastructure for real-time AI operations</p>
+                                <h3>100% EU-baserad</h3>
+                                <p>All data stannar inom EU:s gränser med full efterlevnad av EU:s regelverk</p>
                             </div>
                         </div>
 
@@ -78,8 +60,8 @@ export default function Login(props: PageProps) {
                                 </svg>
                             </div>
                             <div className="feature-content">
-                                <h3>Access Control</h3>
-                                <p>Fine-grained permissions and role-based access control</p>
+                                <h3>GDPR-kompatibel</h3>
+                                <p>NIS2-förberedd och EU AI Act-anpassad för maximal regelefterlevnad</p>
                             </div>
                         </div>
 
@@ -95,8 +77,8 @@ export default function Login(props: PageProps) {
                                 </svg>
                             </div>
                             <div className="feature-content">
-                                <h3>Cloud Native</h3>
-                                <p>Seamless integration with major cloud providers</p>
+                                <h3>Hållbar AI</h3>
+                                <p>100% fossilfri energi med CO₂-spårning per API-anrop och cirkulär hårdvara</p>
                             </div>
                         </div>
                     </div>

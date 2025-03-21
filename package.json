@@ -13,7 +13,7 @@
         "build-storybook": "storybook build -o ./docs/storybook",
         "prestart": "npm run prestorybook",
         "start": "react-scripts start",
-        "prebuild": "keycloakify update-kc-gen",
+        "prebuild": "keycloakify update-kc-gen --no-prettier",
         "build": "react-scripts build",
         "postbuild": "rimraf build/keycloak-resources",
         "build-keycloak-theme": "npm run build && keycloakify build",

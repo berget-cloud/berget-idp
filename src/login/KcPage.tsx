@@ -3,7 +3,9 @@ import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
-import Template from "keycloakify/login/Template";
+import BergetTemplate from "./components/BergetTemplate";
+import Login from "./pages/Login";
+
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
 );
@@ -19,14 +21,24 @@ export default function KcPage(props: { kcContext: KcContext }) {
         <Suspense>
             {(() => {
                 switch (kcContext.pageId) {
+                    case "login":
+                        return (
+                            <Login
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={BergetTemplate}
+                                doUseDefaultCss={false}
+                            />
+                        );
                     default:
                         return (
                             <DefaultPage
                                 kcContext={kcContext}
                                 i18n={i18n}
                                 classes={classes}
-                                Template={Template}
-                                doUseDefaultCss={true}
+                                Template={BergetTemplate}
+                                doUseDefaultCss={false}
                                 UserProfileFormFields={UserProfileFormFields}
                                 doMakeUserConfirmPassword={doMakeUserConfirmPassword}
                             />
@@ -37,4 +49,20 @@ export default function KcPage(props: { kcContext: KcContext }) {
     );
 }
 
-const classes = {} satisfies { [key in ClassKey]?: string };
+// Custom classes for Keycloak elements
+const classes = {
+    kcLoginClass: "login-form",
+    kcFormGroupClass: "form-group",
+    kcLabelClass: "form-label",
+    kcInputClass: "form-input",
+    kcButtonClass: "button-primary",
+    kcButtonPrimaryClass: "button-primary",
+    kcButtonDefaultClass: "button-secondary",
+    kcFormOptionsClass: "form-options",
+    kcFormButtonsClass: "form-buttons",
+    kcInfoAreaClass: "info-area",
+    kcFormSettingClass: "form-settings",
+    kcFormOptionsWrapperClass: "form-options-wrapper",
+    kcButtonBlockClass: "button-block",
+    kcButtonLargeClass: "button-large"
+} satisfies { [key in ClassKey]?: string };

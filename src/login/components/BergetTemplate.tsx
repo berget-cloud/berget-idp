@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "../../../styles/globals.css";
+import "../../styles/globals.css";
 import "../styles/fonts.css";
 import "../styles/berget-theme.css";
 import "../styles/fontawesome.css";

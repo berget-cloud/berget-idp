@@ -59,7 +59,6 @@ jspm_packages
 
 /dist
 
-/dist_keycloak
 /build
 /storybook-static
 .aider*

@@ -1,0 +1,67 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'DM Sans Variable', sans-serif;
+    font-size: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ovo', serif;
+    font-weight: 100;
+    letter-spacing: -0.03em;
+}
+
+.login-pf-page {
+    padding-top: 40px;
+}
+
+.card-pf {
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+#kc-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#kc-header-wrapper {
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.control-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-control {
+    height: 40px;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #333;
+    border-color: #333;
+    color: white;
+    font-weight: 500;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+.error-message {
+    color: #721c24;
+    margin-top: 5px;
+    display: block;
+}

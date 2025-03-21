@@ -3,7 +3,7 @@ import type { PageProps } from "keycloakify/login";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Separator } from "../components/ui/separator";
-import { Github, Google, Key, Microsoft } from "lucide-react";
+import { Github, Key } from "lucide-react";
 
 export default function Login(props: PageProps) {
     const { kcContext, i18n, doUseDefaultCss, Template } = props;
@@ -116,7 +116,7 @@ export default function Login(props: PageProps) {
                             </Button>
                         </div>
                     )}
-                    
+
                     {kcContext.social?.providers && kcContext.social.providers.length > 0 && (
                         <>
                             <div className="separator-container">
@@ -124,30 +124,24 @@ export default function Login(props: PageProps) {
                                 <span className="separator-text">or</span>
                                 <Separator className="separator-line" />
                             </div>
-                            
+
                             <div className="social-login">
-                                {kcContext.social.providers.slice(0, 2).map((provider) => (
-                                    <Button 
-                                        key={provider.providerId} 
-                                        variant="outline" 
-                                        fullWidth={true} 
+                                {kcContext.social.providers.slice(0, 2).map(provider => (
+                                    <Button
+                                        key={provider.providerId}
+                                        variant="outline"
+                                        fullWidth={true}
                                         size="lg"
                                         className="mb-2"
-                                        onClick={() => window.location.href = provider.loginUrl}
+                                        onClick={() => (window.location.href = provider.loginUrl)}
                                     >
-                                        {provider.providerId === 'github' && (
-                                            <Github className="mr-2 h-5 w-5" />
-                                        )}
-                                        {provider.providerId === 'google' && (
-                                            <Google className="mr-2 h-5 w-5" />
-                                        )}
-                                        {provider.providerId === 'microsoft' && (
-                                            <Microsoft className="mr-2 h-5 w-5" />
-                                        )}
+                                        {provider.providerId === "github" && <Github className="mr-2 h-5 w-5" />}
+                                        {provider.providerId === "google" && <Google className="mr-2 h-5 w-5" />}
+                                        {provider.providerId === "microsoft" && <Microsoft className="mr-2 h-5 w-5" />}
                                         Continue with {provider.displayName}
                                     </Button>
                                 ))}
-                                
+
                                 {kcContext.social.providers.length > 2 && (
                                     <div className="more-providers">
                                         <Button variant="ghost" size="sm" className="text-xs">
@@ -191,9 +185,7 @@ export default function Login(props: PageProps) {
                                 aria-invalid={kcContext.messagesPerField?.existsError("username", "password")}
                             />
                             {kcContext.messagesPerField?.existsError("username") && (
-                                <div className="error-message">
-                                    {kcContext.messagesPerField?.get("username")}
-                                </div>
+                                <div className="error-message">{kcContext.messagesPerField?.get("username")}</div>
                             )}
                         </div>
 
@@ -208,18 +200,16 @@ export default function Login(props: PageProps) {
                                     </a>
                                 )}
                             </div>
-                            <Input 
-                                tabIndex={2} 
-                                id="password" 
-                                name="password" 
-                                type="password" 
+                            <Input
+                                tabIndex={2}
+                                id="password"
+                                name="password"
+                                type="password"
                                 autoComplete="off"
                                 aria-invalid={kcContext.messagesPerField?.existsError("username", "password")}
                             />
                             {kcContext.messagesPerField?.existsError("password") && !kcContext.messagesPerField?.existsError("username") && (
-                                <div className="error-message">
-                                    {kcContext.messagesPerField?.get("password")}
-                                </div>
+                                <div className="error-message">{kcContext.messagesPerField?.get("password")}</div>
                             )}
                         </div>
 
@@ -249,7 +239,6 @@ export default function Login(props: PageProps) {
                             </Button>
                         </div>
                     </form>
-
 
                     {realm.password && realm.registrationAllowed && !registrationDisabled && (
                         <div className="signup-link">

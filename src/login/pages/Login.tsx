@@ -125,11 +125,11 @@ export default function Login(props: PageProps) {
                     )}
 
                     <div className="social-login">
-                        <Button variant="outline" fullWidth={true} className="social-button github-button">
+                        <Button variant="outline" fullWidth={true} size="lg">
                             <svg
                                 viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
+                                width="20"
+                                height="20"
                                 stroke="currentColor"
                                 strokeWidth="2"
                                 fill="none"
@@ -211,18 +211,18 @@ export default function Login(props: PageProps) {
                         />
 
                         <div className="form-actions">
-                            <Button type="submit" disabled={isLoginButtonDisabled} fullWidth={true} className="sign-in-button">
+                            <Button type="submit" disabled={isLoginButtonDisabled} fullWidth={true} size="lg">
                                 {msgStr("doLogIn")}
                             </Button>
                         </div>
                     </form>
 
                     <div className="alternative-login">
-                        <Button variant="outline" fullWidth={true} className="alternative-button passkey-button">
+                        <Button variant="outline" fullWidth={true} size="lg">
                             <svg
                                 viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
+                                width="20"
+                                height="20"
                                 stroke="currentColor"
                                 strokeWidth="2"
                                 fill="none"

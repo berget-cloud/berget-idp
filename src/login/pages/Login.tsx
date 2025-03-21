@@ -88,9 +88,9 @@ export default function Login(props: PageProps) {
                 </div>
                 
                 <div className="login-form-section">
-                    {/* Simplified header for mobile-first design */}
                     <div className="login-form-header">
                         <h2>Sign In</h2>
+                        <p>Welcome back! Sign in to continue</p>
                     </div>
 
                     {kcContext.message !== undefined && (
@@ -101,6 +101,19 @@ export default function Login(props: PageProps) {
                             {kcContext.message.summary}
                         </div>
                     )}
+
+                    <div className="social-login">
+                        <Button variant="outline" fullWidth={true} className="social-button github-button">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="mr-2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            Continue with GitHub
+                        </Button>
+                    </div>
+
+                    <div className="separator-container">
+                        <Separator className="separator-line" />
+                        <span className="separator-text">or</span>
+                        <Separator className="separator-line" />
+                    </div>
 
                     <form id="kc-form-login" onSubmit={e => {
                         e.preventDefault();
@@ -143,30 +156,20 @@ export default function Login(props: PageProps) {
                             />
                         </div>
 
-                        <div className="form-options">
-                            {realm.rememberMe && (
-                                <div className="remember-me">
-                                    <label className="checkbox-container">
-                                        <input
-                                            tabIndex={3}
-                                            id="rememberMe"
-                                            name="rememberMe"
-                                            type="checkbox"
-                                            defaultChecked={!!login.rememberMe}
-                                        />
-                                        <span className="checkbox-text">{msg("rememberMe")}</span>
-                                    </label>
-                                </div>
-                            )}
-                            
-                            {realm.resetPasswordAllowed && (
-                                <div className="forgot-password-container">
-                                    <a tabIndex={5} href={url.loginResetCredentialsUrl} className="forgot-password">
-                                        {msg("doForgotPassword")}
-                                    </a>
-                                </div>
-                            )}
-                        </div>
+                        {realm.rememberMe && (
+                            <div className="remember-me">
+                                <label className="checkbox-container">
+                                    <input
+                                        tabIndex={3}
+                                        id="rememberMe"
+                                        name="rememberMe"
+                                        type="checkbox"
+                                        defaultChecked={!!login.rememberMe}
+                                    />
+                                    <span className="checkbox-text">{msg("rememberMe")}</span>
+                                </label>
+                            </div>
+                        )}
 
                         <input
                             type="hidden"
@@ -190,6 +193,13 @@ export default function Login(props: PageProps) {
                             </Button>
                         </div>
                     </form>
+
+                    <div className="alternative-login">
+                        <Button variant="outline" fullWidth={true} className="alternative-button passkey-button">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="mr-2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                            Sign in with Passkey
+                        </Button>
+                    </div>
 
                     {realm.password && realm.registrationAllowed && !registrationDisabled && (
                         <div className="signup-link">

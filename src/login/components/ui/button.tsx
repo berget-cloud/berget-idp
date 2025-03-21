@@ -8,12 +8,12 @@ export const cn = (...inputs: (string | undefined)[]) => {
 };
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap text-sm transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-white text-black",
-        outline: "border border-white/10 bg-white/5 text-white",
+        default: "bg-white text-black hover:bg-white/90",
+        outline: "border border-white/10 bg-transparent hover:bg-white/5 text-white",
         ghost: "hover:bg-white/5 text-white",
         link: "text-white underline-offset-4 hover:underline",
       },

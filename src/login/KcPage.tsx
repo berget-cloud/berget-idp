@@ -50,7 +50,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
 }
 
 // Custom classes for Keycloak elements
-const classes = {
+export const classes = {
     kcLoginClass: "login-form",
     kcFormGroupClass: "form-group",
     kcLabelClass: "form-label",

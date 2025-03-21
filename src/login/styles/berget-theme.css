@@ -80,13 +80,16 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: var(--color-background);
 }
 
 .login-content {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
 }
 
 /* For simple login form view */
@@ -132,12 +135,13 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   width: 100%;
   max-width: 1000px;
   min-height: 600px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -511,10 +515,9 @@ body {
   color: var(--color-text-tertiary);
   font-size: 0.8125rem;
   padding: 0.5rem;
-  position: absolute;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 /* Responsive adjustments */

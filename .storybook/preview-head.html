@@ -1,20 +1,29 @@
 <style>
     body.sb-show-main.sb-main-padded {
-        padding: 0;
+        padding: 0 !important;
+        margin: 0 !important;
+        background-color: #121212 !important;
     }
 
     /* Following styles are just meant to avoid white flash when switching from one story to another */
     @keyframes fadeToTransparent {
         from {
-            background-color: #393939;
+            background-color: #121212;
         }
 
         to {
-            background-color: transparent;
+            background-color: #121212;
         }
     }
     html {
         animation: fadeToTransparent 500ms forwards ease-in;
+        background-color: #121212 !important;
+    }
+    body {
+        background-color: #121212 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 100vh !important;
     }
     body > .sb-preparing-docs {
         visibility: hidden;
@@ -22,4 +31,20 @@
     body > .sb-preparing-story {
         visibility: hidden;
     }
+    
+    /* Fix for Storybook iframe */
+    #storybook-preview-iframe {
+        background-color: #121212 !important;
+    }
+    
+    /* Ensure the login container takes full height */
+    .login-container {
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
 </style>
+
+<link rel="stylesheet" href="../src/login/styles/fonts.css">
+<link rel="stylesheet" href="../src/login/styles/berget-theme.css">

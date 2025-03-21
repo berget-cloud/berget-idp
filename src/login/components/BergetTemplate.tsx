@@ -1,5 +1,5 @@
 import type { TemplateProps } from "keycloakify/login";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "../styles/fonts.css";
 import "../styles/berget-theme.css";
 
@@ -21,12 +21,14 @@ export default function BergetTemplate(props: TemplateProps) {
     } = props;
 
     const { msg, msgStr } = i18n;
+    const bokehRef = useRef<HTMLDivElement>(null);
 
     // Add bokeh effect on component mount
     useEffect(() => {
-        // Create bokeh effect
-        const bokehContainer = document.createElement("div");
-        bokehContainer.className = "bokeh";
+        if (!bokehRef.current) return;
+        
+        // Clear any existing bokeh circles
+        bokehRef.current.innerHTML = '';
         
         // Create bokeh circles with different colors and sizes
         const colors = ["#4361ee", "#22c55e", "#7209b7", "#3b82f6"];
@@ -51,19 +53,13 @@ export default function BergetTemplate(props: TemplateProps) {
             circle.style.setProperty("--color", color);
             circle.style.animationDelay = `${Math.random() * -20}s`;
             
-            bokehContainer.appendChild(circle);
+            bokehRef.current.appendChild(circle);
         }
-        
-        document.body.appendChild(bokehContainer);
-        
-        // Cleanup on unmount
-        return () => {
-            document.body.removeChild(bokehContainer);
-        };
     }, []);
 
     return (
         <div className="login-container">
+            <div ref={bokehRef} className="bokeh"></div>
             <div className="login-content">
                 {children}
                 

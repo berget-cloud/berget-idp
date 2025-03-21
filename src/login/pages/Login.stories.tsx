@@ -1,11 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createKcPageStory } from "../KcPageStory";
+import "../styles/fonts.css";
+import "../styles/berget-theme.css";
 
 const { KcPageStory } = createKcPageStory({ pageId: "login.ftl" });
 
 const meta = {
     title: "login/login.ftl",
-    component: KcPageStory
+    component: KcPageStory,
+    parameters: {
+        layout: 'fullscreen',
+    },
 } satisfies Meta<typeof KcPageStory>;
 
 export default meta;

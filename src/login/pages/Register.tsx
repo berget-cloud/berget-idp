@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { Separator } from "../components/ui/separator";
 
 interface PageProps {
     kcContext: any;
@@ -11,13 +10,13 @@ interface PageProps {
     classes: Record<string, string>;
 }
 
-export default function Login(props: PageProps) {
+export default function Register(props: PageProps) {
     const { kcContext, i18n, doUseDefaultCss, Template } = props;
 
     const { msg, msgStr } = i18n;
-    const { realm, url, usernameEditDisabled, login, auth, registrationDisabled } = kcContext;
+    const { url, messagesPerField, register, realm, passwordPolicies } = kcContext;
 
-    const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
+    const [isRegisterButtonDisabled, setIsRegisterButtonDisabled] = useState(false);
 
     return (
         <Template {...{ kcContext, i18n, doUseDefaultCss }} displayInfo={false} displayMessage={true} displayWide={false} headerNode={null}>
@@ -26,7 +25,6 @@ export default function Login(props: PageProps) {
                     <h1 className="login-title">Berget AI Console</h1>
                     <p className="login-subtitle">Secure infrastructure management for AI operations</p>
 
-                    {/* Hide features on smaller screens */}
                     <div className="login-features hide-on-mobile">
                         <div className="feature-item">
                             <div className="feature-icon">
@@ -92,8 +90,8 @@ export default function Login(props: PageProps) {
 
                 <div className="login-form-section">
                     <div className="login-form-header">
-                        <h2>Sign In</h2>
-                        <p>Welcome back! Sign in to continue</p>
+                        <h2>Create Account</h2>
+                        <p>Sign up to get started with Berget AI Console</p>
                     </div>
 
                     {kcContext.message !== undefined && (
@@ -113,144 +111,141 @@ export default function Login(props: PageProps) {
                         </div>
                     )}
 
-                    {/* Only show passkey option if password field is enabled */}
-                    {realm.password && (
-                        <div className="passkey-login">
-                            <Button variant="outline" fullWidth={true} size="lg">
-                                <span className="fa fa-key mr-2"></span>
-                                Sign in with Passkey
-                            </Button>
-                        </div>
-                    )}
-
-                    {kcContext.social?.providers && kcContext.social.providers.length > 0 && (
-                        <>
-                            <div className="separator-container">
-                                <Separator className="separator-line" />
-                                <span className="separator-text">or</span>
-                                <Separator className="separator-line" />
-                            </div>
-
-                            <div className="social-login">
-                                {kcContext.social.providers.slice(0, 2).map((provider: any) => (
-                                    <Button
-                                        key={provider.providerId}
-                                        variant="outline"
-                                        fullWidth={true}
-                                        size="lg"
-                                        className="mb-2"
-                                        onClick={() => (window.location.href = provider.loginUrl)}
-                                    >
-                                        <span className={`${provider.iconClasses} mr-2`}></span>
-                                        Continue with {provider.displayName}
-                                    </Button>
-                                ))}
-
-                                {kcContext.social.providers.length > 2 && (
-                                    <div className="more-providers">
-                                        <Button variant="ghost" size="sm" className="text-xs">
-                                            + {kcContext.social.providers.length - 2} more providers
-                                        </Button>
-                                    </div>
-                                )}
-                            </div>
-                        </>
-                    )}
-
                     <form
-                        id="kc-form-login"
+                        id="kc-register-form"
                         onSubmit={e => {
                             e.preventDefault();
-                            setIsLoginButtonDisabled(true);
+                            setIsRegisterButtonDisabled(true);
                             const formElement = e.target as HTMLFormElement;
                             formElement.submit();
                         }}
-                        action={url.loginAction}
+                        action={url.registrationAction}
                         method="post"
-                        className="login-form simple-form"
+                        className="login-form"
                     >
                         <div className="form-group">
-                            <label htmlFor="username" className="form-label">
-                                {!realm.loginWithEmailAllowed
-                                    ? msg("username")
-                                    : !realm.registrationEmailAsUsername
-                                      ? msg("usernameOrEmail")
-                                      : msg("email")}
+                            <label htmlFor="firstName" className="form-label">
+                                {msg("firstName")}
                             </label>
-
                             <Input
                                 tabIndex={1}
-                                id="username"
-                                name="username"
-                                defaultValue={login.username ?? ""}
-                                autoFocus={true}
-                                autoComplete="off"
-                                disabled={usernameEditDisabled}
-                                aria-invalid={kcContext.messagesPerField?.existsError("username", "password")}
+                                id="firstName"
+                                name="firstName"
+                                defaultValue={register.formData.firstName ?? ""}
+                                autoComplete="given-name"
+                                aria-invalid={messagesPerField.existsError("firstName")}
                             />
-                            {kcContext.messagesPerField?.existsError("username") && (
-                                <div className="error-message">{kcContext.messagesPerField?.get("username")}</div>
+                            {messagesPerField.existsError("firstName") && (
+                                <div className="error-message">{messagesPerField.get("firstName")}</div>
                             )}
                         </div>
 
                         <div className="form-group">
-                            <div className="password-label-row">
-                                <label htmlFor="password" className="form-label">
-                                    {msg("password")}
-                                </label>
-                                {realm.resetPasswordAllowed && (
-                                    <a tabIndex={5} href={url.loginResetCredentialsUrl} className="forgot-password">
-                                        {msg("doForgotPassword")}
-                                    </a>
-                                )}
-                            </div>
+                            <label htmlFor="lastName" className="form-label">
+                                {msg("lastName")}
+                            </label>
                             <Input
                                 tabIndex={2}
-                                id="password"
-                                name="password"
-                                type="password"
-                                autoComplete="off"
-                                aria-invalid={kcContext.messagesPerField?.existsError("username", "password")}
+                                id="lastName"
+                                name="lastName"
+                                defaultValue={register.formData.lastName ?? ""}
+                                autoComplete="family-name"
+                                aria-invalid={messagesPerField.existsError("lastName")}
                             />
-                            {kcContext.messagesPerField?.existsError("password") && !kcContext.messagesPerField?.existsError("username") && (
-                                <div className="error-message">{kcContext.messagesPerField?.get("password")}</div>
+                            {messagesPerField.existsError("lastName") && (
+                                <div className="error-message">{messagesPerField.get("lastName")}</div>
                             )}
                         </div>
 
-                        {realm.rememberMe && (
-                            <div className="remember-me">
-                                <label className="checkbox-container">
-                                    <input tabIndex={3} id="rememberMe" name="rememberMe" type="checkbox" defaultChecked={!!login.rememberMe} />
-                                    <span className="checkbox-text">{msg("rememberMe")}</span>
+                        <div className="form-group">
+                            <label htmlFor="email" className="form-label">
+                                {msg("email")}
+                            </label>
+                            <Input
+                                tabIndex={3}
+                                id="email"
+                                name="email"
+                                defaultValue={register.formData.email ?? ""}
+                                type="email"
+                                autoComplete="email"
+                                aria-invalid={messagesPerField.existsError("email")}
+                            />
+                            {messagesPerField.existsError("email") && (
+                                <div className="error-message">{messagesPerField.get("email")}</div>
+                            )}
+                        </div>
+
+                        {!realm.registrationEmailAsUsername && (
+                            <div className="form-group">
+                                <label htmlFor="username" className="form-label">
+                                    {msg("username")}
                                 </label>
+                                <Input
+                                    tabIndex={4}
+                                    id="username"
+                                    name="username"
+                                    defaultValue={register.formData.username ?? ""}
+                                    autoComplete="username"
+                                    aria-invalid={messagesPerField.existsError("username")}
+                                />
+                                {messagesPerField.existsError("username") && (
+                                    <div className="error-message">{messagesPerField.get("username")}</div>
+                                )}
                             </div>
                         )}
 
-                        <input
-                            type="hidden"
-                            id="id-hidden-input"
-                            name="credentialId"
-                            {...(auth?.selectedCredential !== undefined
-                                ? {
-                                      value: auth.selectedCredential
-                                  }
-                                : {})}
-                        />
+                        <div className="form-group">
+                            <label htmlFor="password" className="form-label">
+                                {msg("password")}
+                            </label>
+                            <Input
+                                tabIndex={5}
+                                id="password"
+                                name="password"
+                                type="password"
+                                autoComplete="new-password"
+                                aria-invalid={messagesPerField.existsError("password", "password-confirm")}
+                            />
+                            {messagesPerField.existsError("password") && (
+                                <div className="error-message">{messagesPerField.get("password")}</div>
+                            )}
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="password-confirm" className="form-label">
+                                {msg("passwordConfirm")}
+                            </label>
+                            <Input
+                                tabIndex={6}
+                                id="password-confirm"
+                                name="password-confirm"
+                                type="password"
+                                autoComplete="new-password"
+                                aria-invalid={messagesPerField.existsError("password-confirm")}
+                            />
+                            {messagesPerField.existsError("password-confirm") && (
+                                <div className="error-message">{messagesPerField.get("password-confirm")}</div>
+                            )}
+                        </div>
+
+                        {realm.recaptchaRequired && (
+                            <div className="form-group">
+                                <div className="g-recaptcha" data-size="compact" data-sitekey={realm.recaptchaSiteKey}></div>
+                            </div>
+                        )}
 
                         <div className="form-actions">
-                            <Button type="submit" disabled={isLoginButtonDisabled} fullWidth={true} size="lg">
-                                {msgStr("doLogIn")}
+                            <Button type="submit" disabled={isRegisterButtonDisabled} fullWidth={true} size="lg">
+                                {msgStr("doRegister")}
                             </Button>
                         </div>
                     </form>
 
-                    {realm.password && realm.registrationAllowed && !registrationDisabled && (
-                        <div className="signup-link">
-                            <span>
-                                Don't have an account? <a href={url.registrationUrl}>Sign up</a>
-                            </span>
-                        </div>
-                    )}
+                    <div className="signup-link">
+                        <span>
+                            Already have an account? <a href={url.loginUrl}>{msg("backToLogin")}</a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </Template>

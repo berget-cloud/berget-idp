@@ -43,8 +43,8 @@ export const { getKcContextMock } = createGetKcContextMock({
         messagesPerField: {
             printIfExists: () => undefined,
             existsError: () => false,
-            get: (fieldName: string) => "",
-            exists: (fieldName: string) => false
+            get: () => "",
+            exists: () => false
         }
     },
     overridesPerPage: {}

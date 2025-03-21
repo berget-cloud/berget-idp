@@ -21,7 +21,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
         <Suspense>
             {(() => {
                 switch (kcContext.pageId) {
-                    case "login":
+                    case "login.ftl":
                         return (
                             <Login
                                 kcContext={kcContext}

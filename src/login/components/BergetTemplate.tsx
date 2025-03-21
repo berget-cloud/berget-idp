@@ -1,27 +1,13 @@
-import type { TemplateProps } from "keycloakify/login";
 import { useEffect, useRef } from "react";
 import "../styles/fonts.css";
 import "../styles/berget-theme.css";
 import "../styles/fontawesome.css";
 
-export default function BergetTemplate(props: TemplateProps) {
-    const {
-        displayInfo = false,
-        displayMessage = true,
-        displayRequiredFields = false,
-        displayWide = false,
-        showAnotherWayIfPresent = true,
-        headerNode,
-        showUsernameNode = null,
-        infoNode = null,
-        kcContext,
-        i18n,
-        doFetchDefaultThemeResources = true,
-        classes,
-        children
-    } = props;
-
-    const { msg, msgStr } = i18n;
+export default function BergetTemplate(props: {
+    children: React.ReactNode;
+    i18n: { msg: (str: string) => string; msgStr: (str: string) => string };
+}) {
+    const { children, i18n } = props;
     const bokehRef = useRef<HTMLDivElement>(null);
 
     // Add bokeh effect on component mount

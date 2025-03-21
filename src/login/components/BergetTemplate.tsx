@@ -4,9 +4,11 @@ import "../styles/fonts.css";
 import "../styles/berget-theme.css";
 import "../styles/fontawesome.css";
 
+import type { SimpleI18n } from "../i18n";
+
 export default function BergetTemplate(props: {
     children: React.ReactNode;
-    i18n: { msg: (str: string) => string; msgStr: (str: string) => string };
+    i18n: SimpleI18n;
 }) {
     const { children } = props;
     const bokehRef = useRef<HTMLDivElement>(null);

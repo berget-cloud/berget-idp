@@ -7,7 +7,7 @@ import { themeNames, kcEnvDefaults } from "../kc.gen";
 import Login from "./pages/Login";
 import BergetTemplate from "./components/BergetTemplate";
 import { classes } from "./KcPage";
-import type { I18n } from "./i18n";
+import type { SimpleI18n } from "./i18n";
 
 const kcContextExtension: KcContextExtension = {
     themeName: themeNames[0],
@@ -35,10 +35,6 @@ export const { getKcContextMock } = createGetKcContextMock({
             loginUrl: "#"
         } as any, // Use type assertion for demo purposes
         message: undefined,
-        login: {
-            username: "",
-            rememberMe: false
-        },
         messagesPerField: {
             printIfExists: () => undefined,
             existsError: () => false,
@@ -67,8 +63,8 @@ export function createKcPageStory<PageId extends KcContext["pageId"]>(params: {
         const { i18n } = useI18n({ kcContext: kcContextMock });
 
         // Create a compatible i18n object for our components
-        const compatI18n = {
-            msg: (str: string) => i18n.msg(str as any),
+        const compatI18n: SimpleI18n = {
+            msg: (str: string) => String(i18n.msg(str as any)),
             msgStr: (str: string) => i18n.msgStr(str as any)
         };
 

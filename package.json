@@ -41,7 +41,7 @@
         "@reduxjs/toolkit": "^2.2.7",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
-        "keycloakify": "^10.0.5",
+        "keycloakify": "^11.8.22",
         "lucide-react": "^0.438.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -50,10 +50,10 @@
         "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
-        "@storybook/addon-essentials": "^8.2.9",
-        "@storybook/blocks": "^8.1.9",
-        "@storybook/preset-create-react-app": "^8.1.9",
-        "@storybook/react": "^8.1.9",
+        "@storybook/addon-essentials": "^8.6.7",
+        "@storybook/blocks": "^8.6.7",
+        "@storybook/preset-create-react-app": "^8.6.7",
+        "@storybook/react": "^8.6.7",
         "@storybook/react-webpack5": "^8.1.9",
         "@storybook/test": "^8.1.9",
         "@tailwindcss/typography": "^0.5.15",
@@ -64,7 +64,7 @@
         "prop-types": "^15.8.1",
         "react-scripts": "5.0.1",
         "rimraf": "^5.0.5",
-        "storybook": "^8.1.9",
+        "storybook": "^8.6.7",
         "typescript": "~5.1.6",
         "webpack": "^5.92.0"
     },

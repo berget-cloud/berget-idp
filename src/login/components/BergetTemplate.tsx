@@ -28,10 +28,29 @@ export default function BergetTemplate(props: TemplateProps) {
         const bokehContainer = document.createElement("div");
         bokehContainer.className = "bokeh";
         
-        // Create bokeh circles
-        for (let i = 0; i < 3; i++) {
+        // Create bokeh circles with different colors and sizes
+        const colors = ["#4361ee", "#22c55e", "#7209b7", "#3b82f6"];
+        const sizes = [300, 250, 200, 350, 180];
+        
+        for (let i = 0; i < 5; i++) {
             const circle = document.createElement("div");
             circle.className = "bokeh-circle";
+            
+            // Set random positions
+            const top = Math.random() * 100;
+            const left = Math.random() * 100;
+            
+            // Set random color and size
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const size = sizes[Math.floor(Math.random() * sizes.length)];
+            
+            circle.style.top = `${top}%`;
+            circle.style.left = `${left}%`;
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            circle.style.setProperty("--color", color);
+            circle.style.animationDelay = `${Math.random() * -20}s`;
+            
             bokehContainer.appendChild(circle);
         }
         

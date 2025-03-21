@@ -89,7 +89,7 @@ export default function Login(props: PageProps) {
                 <div className="login-form-section">
                     <div className="login-form-header">
                         <h2>Sign In</h2>
-                        <p>Welcome back! Sign in to continue</p>
+                        <p>Welcome back to Berget AI Console</p>
                     </div>
 
                     {kcContext.message !== undefined && (
@@ -137,6 +137,7 @@ export default function Login(props: PageProps) {
                                 autoFocus={true}
                                 autoComplete="off"
                                 disabled={usernameEditDisabled}
+                                placeholder="Enter your username or email"
                             />
                         </div>
 
@@ -157,6 +158,7 @@ export default function Login(props: PageProps) {
                                 name="password"
                                 type="password"
                                 autoComplete="off"
+                                placeholder="Enter your password"
                             />
                         </div>
 
@@ -191,6 +193,7 @@ export default function Login(props: PageProps) {
                                 type="submit"
                                 disabled={isLoginButtonDisabled}
                                 fullWidth={true}
+                                size="lg"
                             >
                                 {msgStr("doLogIn")}
                             </Button>

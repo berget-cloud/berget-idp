@@ -278,6 +278,14 @@ body {
 /* Social Login */
 .social-login {
   margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.more-providers {
+  text-align: center;
+  margin-top: 0.25rem;
 }
 
 /* Separator */
@@ -361,6 +369,17 @@ body {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   user-select: none;
+}
+
+/* Error message styling */
+.error-message {
+  color: var(--color-error);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--color-error);
 }
 
 /* Form Actions */

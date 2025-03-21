@@ -28,9 +28,18 @@ export const WithInvalidCredential: Story = {
                 login: {
                     username: "johndoe"
                 },
+                message: {
+                    type: "error",
+                    summary: "Invalid username or password."
+                },
                 messagesPerField: {
-                    // NOTE: The other functions of messagesPerField are derived from get() and
-                    // existsError() so they are the only ones that need to mock.
+                    printIfExists: (fieldName: string, ...otherFieldNames: string[]) => {
+                        const fieldNames = [fieldName, ...otherFieldNames];
+                        if (fieldNames.includes("username") || fieldNames.includes("password")) {
+                            return "Invalid username or password.";
+                        }
+                        return undefined;
+                    },
                     existsError: (fieldName: string, ...otherFieldNames: string[]) => {
                         const fieldNames = [fieldName, ...otherFieldNames];
                         return fieldNames.includes("username") || fieldNames.includes("password");
@@ -40,6 +49,9 @@ export const WithInvalidCredential: Story = {
                             return "Invalid username or password.";
                         }
                         return "";
+                    },
+                    exists: (fieldName: string) => {
+                        return fieldName === "username" || fieldName === "password";
                     }
                 }
             }}

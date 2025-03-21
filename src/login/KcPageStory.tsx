@@ -29,6 +29,22 @@ export const { getKcContextMock } = createGetKcContextMock({
             resetPasswordAllowed: true,
             rememberMe: true,
             password: true
+        },
+        url: {
+            loginAction: "#",
+            loginResetCredentialsUrl: "#",
+            registrationUrl: "#"
+        },
+        message: undefined,
+        login: {
+            username: "",
+            rememberMe: false
+        },
+        messagesPerField: {
+            printIfExists: () => undefined,
+            existsError: () => false,
+            get: (fieldName: string) => "",
+            exists: (fieldName: string) => false
         }
     },
     overridesPerPage: {}

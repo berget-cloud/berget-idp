@@ -3,7 +3,6 @@ import type { PageProps } from "keycloakify/login";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Separator } from "../components/ui/separator";
-import { Github, Key } from "lucide-react";
 
 export default function Login(props: PageProps) {
     const { kcContext, i18n, doUseDefaultCss, Template } = props;
@@ -111,7 +110,7 @@ export default function Login(props: PageProps) {
                     {realm.password && (
                         <div className="passkey-login">
                             <Button variant="outline" fullWidth={true} size="lg">
-                                <Key className="mr-2 h-5 w-5" />
+                                <i className="fa fa-key mr-2"></i>
                                 Sign in with Passkey
                             </Button>
                         </div>
@@ -135,9 +134,7 @@ export default function Login(props: PageProps) {
                                         className="mb-2"
                                         onClick={() => (window.location.href = provider.loginUrl)}
                                     >
-                                        {provider.providerId === "github" && <Github className="mr-2 h-5 w-5" />}
-                                        {provider.providerId === "google" && <Google className="mr-2 h-5 w-5" />}
-                                        {provider.providerId === "microsoft" && <Microsoft className="mr-2 h-5 w-5" />}
+                                        <i className={`${provider.iconClasses} mr-2`}></i>
                                         Continue with {provider.displayName}
                                     </Button>
                                 ))}

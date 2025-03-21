@@ -284,6 +284,11 @@ body {
   gap: 0.5rem;
 }
 
+/* Font Awesome Icons */
+.fa {
+  font-size: 1rem;
+}
+
 .more-providers {
   text-align: center;
   margin-top: 0.25rem;

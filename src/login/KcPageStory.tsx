@@ -16,7 +16,18 @@ const kcContextExtensionPerPage: KcContextExtensionPerPage = {};
 export const { getKcContextMock } = createGetKcContextMock({
     kcContextExtension,
     kcContextExtensionPerPage,
-    overrides: {},
+    overrides: {
+        // Ensure the login page shows up properly in Storybook
+        realm: {
+            internationalizationEnabled: true,
+            displayNameHtml: "Berget AI Console",
+            loginWithEmailAllowed: true,
+            registrationAllowed: true,
+            resetPasswordAllowed: true,
+            rememberMe: true,
+            password: true
+        }
+    },
     overridesPerPage: {}
 });
 

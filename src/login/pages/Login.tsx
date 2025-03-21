@@ -87,9 +87,9 @@ export default function Login(props: PageProps) {
                 </div>
                 
                 <div className="login-form-section">
+                    {/* Simplified header for mobile-first design */}
                     <div className="login-form-header">
                         <h2>Sign In</h2>
-                        <p>Welcome back to Berget AI Console</p>
                     </div>
 
                     {kcContext.message !== undefined && (
@@ -101,25 +101,12 @@ export default function Login(props: PageProps) {
                         </div>
                     )}
 
-                    <div className="social-login">
-                        <Button variant="outline" fullWidth={true} className="social-button">
-                            <GithubIcon className="mr-2 h-4 w-4" />
-                            Continue with GitHub
-                        </Button>
-                    </div>
-
-                    <div className="separator-container">
-                        <Separator className="separator-line" />
-                        <span className="separator-text">or</span>
-                        <Separator className="separator-line" />
-                    </div>
-
                     <form id="kc-form-login" onSubmit={e => {
                         e.preventDefault();
                         setIsLoginButtonDisabled(true);
                         const formElement = e.target as HTMLFormElement;
                         formElement.submit();
-                    }} action={url.loginAction} method="post" className="login-form">
+                    }} action={url.loginAction} method="post" className="login-form simple-form">
                         <div className="form-group">
                             <label htmlFor="username" className="form-label">
                                 {!realm.loginWithEmailAllowed
@@ -137,7 +124,6 @@ export default function Login(props: PageProps) {
                                 autoFocus={true}
                                 autoComplete="off"
                                 disabled={usernameEditDisabled}
-                                placeholder="Enter your username or email"
                             />
                         </div>
 
@@ -146,11 +132,6 @@ export default function Login(props: PageProps) {
                                 <label htmlFor="password" className="form-label">
                                     {msg("password")}
                                 </label>
-                                {realm.resetPasswordAllowed && (
-                                    <a tabIndex={5} href={url.loginResetCredentialsUrl} className="forgot-password">
-                                        {msg("doForgotPassword")}
-                                    </a>
-                                )}
                             </div>
                             <Input
                                 tabIndex={2}
@@ -158,24 +139,33 @@ export default function Login(props: PageProps) {
                                 name="password"
                                 type="password"
                                 autoComplete="off"
-                                placeholder="Enter your password"
                             />
                         </div>
 
-                        {realm.rememberMe && (
-                            <div className="remember-me">
-                                <label className="checkbox-container">
-                                    <input
-                                        tabIndex={3}
-                                        id="rememberMe"
-                                        name="rememberMe"
-                                        type="checkbox"
-                                        defaultChecked={!!login.rememberMe}
-                                    />
-                                    <span className="checkbox-text">{msg("rememberMe")}</span>
-                                </label>
-                            </div>
-                        )}
+                        <div className="form-options">
+                            {realm.rememberMe && (
+                                <div className="remember-me">
+                                    <label className="checkbox-container">
+                                        <input
+                                            tabIndex={3}
+                                            id="rememberMe"
+                                            name="rememberMe"
+                                            type="checkbox"
+                                            defaultChecked={!!login.rememberMe}
+                                        />
+                                        <span className="checkbox-text">{msg("rememberMe")}</span>
+                                    </label>
+                                </div>
+                            )}
+                            
+                            {realm.resetPasswordAllowed && (
+                                <div className="forgot-password-container">
+                                    <a tabIndex={5} href={url.loginResetCredentialsUrl} className="forgot-password">
+                                        {msg("doForgotPassword")}
+                                    </a>
+                                </div>
+                            )}
+                        </div>
 
                         <input
                             type="hidden"
@@ -193,19 +183,12 @@ export default function Login(props: PageProps) {
                                 type="submit"
                                 disabled={isLoginButtonDisabled}
                                 fullWidth={true}
-                                size="lg"
+                                className="sign-in-button"
                             >
                                 {msgStr("doLogIn")}
                             </Button>
                         </div>
                     </form>
-
-                    <div className="alternative-login">
-                        <Button variant="outline" fullWidth={true} className="alternative-button">
-                            <KeyIcon className="mr-2 h-4 w-4" />
-                            Sign in with Passkey
-                        </Button>
-                    </div>
 
                     {realm.password && realm.registrationAllowed && !registrationDisabled && (
                         <div className="signup-link">

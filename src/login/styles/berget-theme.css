@@ -51,7 +51,7 @@ body {
 .bokeh-circle {
   position: absolute;
   border-radius: 50%;
-  animation: float 20s infinite;
+  animation: bokeh-float 20s infinite;
 }
 
 .bokeh-circle:nth-child(1) {
@@ -84,7 +84,7 @@ body {
   animation-delay: -10s;
 }
 
-@keyframes float {
+@keyframes bokeh-float {
   0%, 100% { transform: translate(0, 0); }
   25% { transform: translate(10px, 10px); }
   50% { transform: translate(-5px, 15px); }

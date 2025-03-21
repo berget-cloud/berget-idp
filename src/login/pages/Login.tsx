@@ -3,6 +3,7 @@ import type { PageProps } from "keycloakify/login";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Separator } from "../components/ui/separator";
+import { Github, Google, Key, Microsoft } from "lucide-react";
 
 export default function Login(props: PageProps) {
     const { kcContext, i18n, doUseDefaultCss, Template } = props;
@@ -124,8 +125,24 @@ export default function Login(props: PageProps) {
                         </div>
                     )}
 
+                    {/* Only show passkey option if password field is enabled */}
+                    {realm.password && (
+                        <div className="passkey-login">
+                            <Button variant="outline" fullWidth={true} size="lg">
+                                <Key className="mr-2 h-5 w-5" />
+                                Sign in with Passkey
+                            </Button>
+                        </div>
+                    )}
+                    
                     {kcContext.social?.providers && kcContext.social.providers.length > 0 && (
                         <>
+                            <div className="separator-container">
+                                <Separator className="separator-line" />
+                                <span className="separator-text">or</span>
+                                <Separator className="separator-line" />
+                            </div>
+                            
                             <div className="social-login">
                                 {kcContext.social.providers.slice(0, 2).map((provider) => (
                                     <Button 
@@ -137,53 +154,13 @@ export default function Login(props: PageProps) {
                                         onClick={() => window.location.href = provider.loginUrl}
                                     >
                                         {provider.providerId === 'github' && (
-                                            <svg
-                                                viewBox="0 0 24 24"
-                                                width="20"
-                                                height="20"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                fill="none"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                            </svg>
+                                            <Github className="mr-2 h-5 w-5" />
                                         )}
                                         {provider.providerId === 'google' && (
-                                            <svg
-                                                viewBox="0 0 24 24"
-                                                width="20"
-                                                height="20"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                fill="none"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
-                                                <path d="M17.8307 10.8891H12.5557V13.1891H15.5891C15.3974 14.4891 14.2224 16.1391 12.5557 16.1391C10.5891 16.1391 8.9974 14.5474 8.9974 12.5807C8.9974 10.6141 10.5891 9.02243 12.5557 9.02243C13.6807 9.02243 14.4307 9.47243 14.9141 9.92243L16.6807 8.22243C15.5557 7.17243 14.1807 6.58076 12.5557 6.58076C9.1474 6.58076 6.38574 9.34243 6.38574 12.5807C6.38574 15.8191 9.1474 18.5807 12.5557 18.5807C16.1391 18.5807 18.5557 16.0224 18.5557 12.6641C18.5557 12.1807 18.4974 11.5391 18.4141 11.0557L17.8307 10.8891Z"></path>
-                                            </svg>
+                                            <Google className="mr-2 h-5 w-5" />
                                         )}
                                         {provider.providerId === 'microsoft' && (
-                                            <svg
-                                                viewBox="0 0 24 24"
-                                                width="20"
-                                                height="20"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                fill="none"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M11.5 3.5V11.5H3.5V3.5H11.5Z"></path>
-                                                <path d="M20.5 3.5V11.5H12.5V3.5H20.5Z"></path>
-                                                <path d="M11.5 12.5V20.5H3.5V12.5H11.5Z"></path>
-                                                <path d="M20.5 12.5V20.5H12.5V12.5H20.5Z"></path>
-                                            </svg>
+                                            <Microsoft className="mr-2 h-5 w-5" />
                                         )}
                                         Continue with {provider.displayName}
                                     </Button>
@@ -196,12 +173,6 @@ export default function Login(props: PageProps) {
                                         </Button>
                                     </div>
                                 )}
-                            </div>
-
-                            <div className="separator-container">
-                                <Separator className="separator-line" />
-                                <span className="separator-text">or</span>
-                                <Separator className="separator-line" />
                             </div>
                         </>
                     )}
@@ -297,27 +268,6 @@ export default function Login(props: PageProps) {
                         </div>
                     </form>
 
-                    {/* Only show passkey option if password field is enabled */}
-                    {realm.password && (
-                        <div className="alternative-login">
-                            <Button variant="outline" fullWidth={true} size="lg">
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    width="20"
-                                    height="20"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    fill="none"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="mr-2"
-                                >
-                                    <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
-                                </svg>
-                                Sign in with Passkey
-                            </Button>
-                        </div>
-                    )}
 
                     {realm.password && realm.registrationAllowed && !registrationDisabled && (
                         <div className="signup-link">

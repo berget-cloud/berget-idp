@@ -1,5 +1,6 @@
 import type { TemplateProps } from "keycloakify/login";
 import { useEffect } from "react";
+import "../styles/fonts.css";
 import "../styles/berget-theme.css";
 
 export default function BergetTemplate(props: TemplateProps) {

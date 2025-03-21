@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { createKcPageStory } from "../KcPageStory";
 import "../styles/fonts.css";
 import "../styles/berget-theme.css";
-import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css";
+import "../styles/fontawesome.css";
 
 const { KcPageStory } = createKcPageStory({ pageId: "login.ftl" });
 

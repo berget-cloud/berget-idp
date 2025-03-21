@@ -110,7 +110,7 @@ export default function Login(props: PageProps) {
                     {realm.password && (
                         <div className="passkey-login">
                             <Button variant="outline" fullWidth={true} size="lg">
-                                <i className="fa fa-key mr-2"></i>
+                                <span className="fa fa-key mr-2"></span>
                                 Sign in with Passkey
                             </Button>
                         </div>
@@ -134,7 +134,7 @@ export default function Login(props: PageProps) {
                                         className="mb-2"
                                         onClick={() => (window.location.href = provider.loginUrl)}
                                     >
-                                        <i className={`${provider.iconClasses} mr-2`}></i>
+                                        <span className={`${provider.iconClasses} mr-2`}></span>
                                         Continue with {provider.displayName}
                                     </Button>
                                 ))}
